@@ -21,23 +21,29 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         GIDSignIn.sharedInstance()?.presentingViewController = self // 로그인화면 불러오기
-            GIDSignIn.sharedInstance()?.restorePreviousSignIn() // 자동로그인
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn() // 자동로그인
+        
 
     }
 
     @IBAction func login(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signIn()
+        
     }
     
     @IBAction func userInfo(_ sender: Any) {
         let user = AppDelegate.user
             
             self.idLabel.text = user?.userID
-        print(user?.userID)
+        guard let id = user?.userID else {
+            return
+        }
+        print(id)
             self.emailLabel.text = user?.profile.email
-        print(user?.profile.email)
+        print(user!.profile.email!)
             self.nameLabel.text = user?.profile.name
         print(user?.profile.name)
+        print(user?.authentication.accessToken)
     }
 }
 
