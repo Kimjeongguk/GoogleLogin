@@ -1,0 +1,6 @@
+framework module Pods_GoogleLoginEx {
+  umbrella header "Pods-GoogleLoginEx-umbrella.h"
+
+  export *
+  module * { export * }
+}
